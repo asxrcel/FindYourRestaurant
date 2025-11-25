@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FindYourRestaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <title>j'AI faim !</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,31 +15,6 @@
   </head>
 
   <body>
-
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          <i class="fa-solid fa-burger"></i>
-    </a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto">
-            <% if current_user %>
-              <li class="nav-item active">
-                <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-              </li>
-            <% else %>
-              <li class="nav-item active">
-                <a class="nav-link" href="/users/sign_up">Sign Up</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/users/sign_in">Log in</a>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
     <%= yield %>
   </body>
 </html>
