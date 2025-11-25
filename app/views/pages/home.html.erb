@@ -1,19 +1,45 @@
-<h1>Hello <%= current_user.name %></h1>
-<div class="card-holder">
-  <h3>Here are your favourite restaurants</h3>
+<header> <%= render "shared/navbar" %> </header>
 
-  <ul> <% @restaurants.each do |restaurant| %>
-    <li class= "card">
-      <div class="card-product">
-        <img src="app/assets/images/burger.jpeg"/>
-        <div class="card-product-infos">
-          <h2><%= restaurant.name %></h2>
-          <p> <%= restaurant.address %></p>
-          <p><%= restaurant.rating %></p>
-        </div>
+<div class="home-body">
+
+  <h1> Welcome <%= current_user.name %></h1>
+
+  <div class="home-split">
+
+    <div class="card-holder">
+      <h3>Here are your favourite restaurants</h3>
+      <%= link_to "Add a new restaurant", "#", class:"btn btn-secondary my-3" %>
+
+      <div class="card-scroll">
+        <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
+          <li class= "card">
+            <div class="card-product">
+              <div class="img-block">
+                <%= image_tag "burger.jpeg", alt: "restau_poster" %>
+                <i class="fa-regular fa-circle-xmark"></i>
+              </div>
+              <div class="card-product-infos">
+                <div class="card-content-text">
+                  <h2><%= restaurant.name %></h2>
+                  <h4><%= restaurant.category %></h4>
+                  <p> <%= restaurant.address %></p>
+                  </div>
+                <div class="card-content-numbers">
+                  <p><i class="fa-regular fa-star"></i> <%= restaurant.rating %></p>
+                  <p><%= restaurant.budget %></p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
       </div>
-    </li>
-    <% end %>
-  </ul>
+    </div>
+
+    <div class="favourite-generator">
+      <h3>Restaurants close to your favorites</h3>
+      <%= link_to "Generate Restaurant", "#", class:"btn btn-secondary my-3" %>
+    </div>
+
+  </div>
 </div>
-<%= link_to "Add a new restaurant", "#" %>
