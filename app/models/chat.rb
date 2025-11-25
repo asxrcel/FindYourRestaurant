@@ -1,4 +1,17 @@
 class Chat < ApplicationRecord
   has_many :messages
   belongs_to :user
+  DEFAULT_TITLE = "Untitled"
+  TITLE_PROMPT = <<~PROMPT
+  Generate a short, descriptive, 3-to-6-word title that tell : Search a restaurant in (location).
+  PROMPT
+  def generate_title_from_first_message
+  return unless title == DEFAULT_TITLE
+
+  first_user_message = messages.where(role: "user").order(:created_at).first
+  return if first_user_message.nil?
+
+  response = RubyLLM.chat.with_instructions(TITLE_PROMPT).ask(first_user_message.content)
+  update(title: response.content)
+end
 end
