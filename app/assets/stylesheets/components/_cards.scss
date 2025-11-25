@@ -9,26 +9,35 @@
 }
 
 .img-block {
+  position: relative;
+  display: inline-block;
 }
 
-.img-block i {
-  color: #ffffff;
+.delete-icon {
   position: absolute;
+  top: 8px;                  /* distance depuis le haut */
+  left: 8px;                 /* distance depuis la gauche */
+  font-size: 24px;           /* taille de la croix */
+  color: #fff;               /* couleur blanche */
+  text-shadow: 0 0 4px rgba(0,0,0,0.6);  /* pour rendre visible sur photo */       /* pointeur clique */
+  z-index: 10;
+  text-decoration: none;
 }
 
 .card-scroll {
-  height: 500px;                    /* prend tout l’espace vertical dispo */
+  height: 400px;                    /* prend tout l’espace vertical dispo */
   overflow-y: auto;           /* active la barre de défilement */
   padding: 8px;         /* petit espace pour le scroll */
   border: 2px;
   border-style: groove;
   border-color: black;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .card-product {
   overflow: hidden;
-  height: 100px;
+  height: 80px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -57,7 +66,6 @@
 
 .card-product img {
   height: 100%;
-  width: 100px;
   object-fit: cover;
 }
 

@@ -3,12 +3,12 @@
 <div class="home-body">
 
   <h1> Welcome <%= current_user.name %></h1>
+  <hr>
 
   <div class="home-split">
 
     <div class="card-holder">
       <h3>Here are your favourite restaurants</h3>
-      <%= link_to "Add a new restaurant", "#", class:"btn btn-secondary my-3" %>
 
       <div class="card-scroll">
         <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
@@ -16,7 +16,7 @@
             <div class="card-product">
               <div class="img-block">
                 <%= image_tag "burger.jpeg", alt: "restau_poster" %>
-                <i class="fa-regular fa-circle-xmark"></i>
+                <%= link_to " ", "#", class:"fa-regular fa-circle-xmark delete-icon" %>
               </div>
               <div class="card-product-infos">
                 <div class="card-content-text">
@@ -34,10 +34,11 @@
           <% end %>
         </ul>
       </div>
+      <%= link_to "Add a new restaurant", "#", class:"btn btn-secondary my-3" %>
     </div>
 
     <div class="favourite-generator">
-      <h3>Restaurants close to your favorites</h3>
+      <h3>Ask AI to generate another restaurant close to your favorites</h3>
       <%= link_to "Generate Restaurant", "#", class:"btn btn-secondary my-3" %>
     </div>
 

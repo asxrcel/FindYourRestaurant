@@ -6,4 +6,5 @@ class PagesController < ApplicationController
     @user = current_user
     @restaurants = @user.restaurants.where(params[:id])
   end
+
 end
