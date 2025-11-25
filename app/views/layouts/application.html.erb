@@ -11,8 +11,31 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <i class="fa-solid fa-burger"></i>
+    </a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <% if current_user %>
+              <li class="nav-item active">
+                <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item active">
+                <a class="nav-link" href="/users/sign_up">Sign Up</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/users/sign_in">Log in</a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
