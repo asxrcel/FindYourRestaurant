@@ -1,3 +1,49 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= button_to "Start a chat", chats_path, method: :post  %>
+<header> <%= render "shared/navbar" %> </header>
+
+<div class="home-body">
+
+  <h1> Welcome <%= current_user.name %></h1>
+  <hr>
+
+  <div class="home-split">
+
+    <div class="card-holder">
+      <h3>Here are your favourite restaurants</h3>
+
+      <div class="card-scroll">
+        <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
+          <li class= "card">
+            <div class="card-product">
+              <div class="img-block">
+                <%= image_tag "burger.jpeg", alt: "restau_poster" %>
+                <%= link_to " ", "#", class:"fa-regular fa-circle-xmark delete-icon" %>
+              </div>
+              <div class="card-product-infos">
+                <div class="card-content-text">
+                  <h2><%= restaurant.name %></h2>
+                  <h4><%= restaurant.category %></h4>
+                  <p> <%= restaurant.address %></p>
+                  </div>
+                <div class="card-content-numbers">
+                  <p><i class="fa-regular fa-star"></i> <%= restaurant.rating %></p>
+                  <p><%= restaurant.budget %></p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <%= link_to "Add a new restaurant", "#", class:"btn btn-secondary my-3" %>
+    </div>
+
+    <div class="favourite-generator">
+      <h3>Ask AI to generate another restaurant close to your favorites</h3>
+      <%= link_to "Generate Restaurant", "#", class:"btn btn-secondary my-3" %>
+    </div>
+
+  </div>
+</div>
