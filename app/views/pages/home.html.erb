@@ -16,15 +16,15 @@
             <div class="card-product">
               <div class="img-block">
                 <%= image_tag "burger.jpeg", alt: "restau_poster" %>
-                <%= link_to " ", "#", class:"fa-regular fa-circle-xmark delete-icon" %>
-              </div>
-              <div class="card-product-infos">
-                <div class="card-content-text">
-                  <h2><%= restaurant.name %></h2>
-                  <h4><%= restaurant.category %></h4>
-                  <p> <%= restaurant.address %></p>
+                <%= link_to " ", restaurant_path(restaurant), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"},  class:"fa-regular fa-circle-xmark delete-icon" %>
                   </div>
-                <div class="card-content-numbers">
+                  <div class="card-product-infos">
+                    <div class="card-content-text">
+                      <h2><%= restaurant.name %></h2>
+                      <h4><%= restaurant.category %></h4>
+                      <p> <%= restaurant.address %></p>
+                      </div>
+                    <div class="card-content-numbers">
                   <p><i class="fa-regular fa-star"></i> <%= restaurant.rating %></p>
                   <p><%= restaurant.budget %></p>
                 </div>

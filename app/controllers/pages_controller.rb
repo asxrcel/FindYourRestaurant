@@ -5,4 +5,6 @@ class PagesController < ApplicationController
     @restaurants = current_user.restaurants.where(favorite: true)
   end
 
+
+  
 end
