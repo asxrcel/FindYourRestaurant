@@ -1,5 +1,6 @@
 class Chat < ApplicationRecord
   has_many :messages
+  has_many :restaurants
   belongs_to :user
   DEFAULT_TITLE = "New chat"
   TITLE_PROMPT = <<~PROMPT

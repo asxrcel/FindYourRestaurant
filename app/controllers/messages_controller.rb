@@ -17,13 +17,14 @@ def create
             if is_json
             @display     = json["display"]
             @restaurants = json["restaurants"]
-            @restaurants.each do |restaurant|
-               current_user.restaurants.create!(
+              @restaurants.each do |restaurant|
+               @chat.restaurants.create!(
                 name:     restaurant["name"],
                 address:  restaurant["address"],
                 rating:   restaurant["rating"],
                 budget:   restaurant["budget"],
-                category: restaurant["category"]
+                category: restaurant["category"],
+                user:     current_user
                 )
             end
             li_list = @restaurants.map {|r| "<li>#{r["name"]}</li>"}.join

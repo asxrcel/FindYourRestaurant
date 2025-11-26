@@ -1,33 +1,61 @@
+<div class ="text-center">
 <h1 id="chat_title"><%= @chat.title %></h1>
-
-<div id="messages">
-  <% @chat.messages.each do |message| %>
-    <% if message.role == "user" %>
-      <div class="d-flex justify-content-end mb-2">
-        <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
-           <%= simple_format(message.content) %>
-        </div>
-      </div>
-    <% elsif message.role == "assistant" %>
-      <div class="d-flex justify-content-start mb-5">
-        <div class="px-3 pb-0 pt-3">
-          <%= simple_format(message.content) %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
 </div>
+<div class = "container">
+  <div class = "row d-flex">
+    <div id = "chatbox" class ="col-md-6">
+      <div id="messages">
+        <% @chat.messages.each do |message| %>
+          <% if message.role == "user" %>
+            <div class="d-flex justify-content-end mb-2">
+              <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
+                <%= simple_format(message.content) %>
+              </div>
+            </div>
+          <% elsif message.role == "assistant" %>
+            <div class="d-flex justify-content-start mb-5">
+              <div class="px-3 pb-0 pt-3">
+                <%= simple_format(message.content) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
 
-<div id="new_message_container">
-    <%= simple_form_for [@chat, @message] do |f| %>
-      <%= f.input :content, label: @label, required: true, placeholder: @label %>
-      <%= f.button :submit, 'Answere', class: 'btn btn-primary' %>
-    <% end %>
+        <div id="new_message_container">
+          <%= simple_form_for [@chat, @message] do |f| %>
+            <%= f.input :content, label: @label, required: true, placeholder: @label %>
+            <%= f.button :submit, 'Send', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+    </div>
+    <div id="cardandmap" class = "col-md-6">
+        <div id = "card">
+          <% if @restaurants %>
+        <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
+        <li class= "card">
+          <div class="card-product">
+            <div class="img-block">
+              <%= image_tag "burger.jpeg", alt: "restau_poster" %>
+            </div>
+            <div class="card-product-infos">
+              <div class="card-content-text">
+                <h2><%= restaurant.name %></h2>
+                <h4><%= restaurant.category %></h4>
+                <p> <%= restaurant.address %></p>
+                </div>
+                <div class="card-content-numbers">
+                <p><i class="fa-regular fa-star"></i> <%= restaurant.rating %></p>
+                <p><%= restaurant.budget %></p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+        </div>
+    </div>
+  </div>
 </div>
-
 <%= link_to "Home", root_path   %>
-<% if @restaurants %>
-<% @restaurants.each do |restaurant| %>
-<%= restaurant.name%>
-<% end %>
-<% end %>
