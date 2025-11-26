@@ -1,10 +1,13 @@
 <header> <%= render "shared/navbar" %> </header>
+
 <div class ="text-center">
-<h1 id="chat_title"><%= @chat.title %></h1>
+  <h1 id="chat_title"><%= @chat.title %></h1>
 </div>
+
 <div class = "container">
   <div class = "row d-flex">
     <div id = "chatbox" class ="col-md-6">
+
       <div id="messages">
         <% @chat.messages.each do |message| %>
           <% if message.role == "user" %>
@@ -23,45 +26,46 @@
         <% end %>
       </div>
 
-        <div id="new_message_container">
-          <%= simple_form_for [@chat, @message] do |f| %>
-            <%= f.input :content, label: @label, required: true, placeholder: @label %>
-            <%= f.button :submit, 'Send', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-    </div>
-    <div id="cardandmap" class = "col-md-6">
-        <div id = "card">
-          <% if @restaurants %>
-          <form action="<%= chat_restaurants_path(@chat) %>"  method="patch">
-        <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
-        <li class= "card">
-          <div class="card-product">
-            <div class="img-block">
-              <%= image_tag "burger.jpeg", alt: "restau_poster" %>
-            </div>
-            <div class="card-product-infos">
-              <div class="card-content-text">
-                <h2><%= restaurant.name %></h2>
-                <h4><%= restaurant.category %></h4>
-                <p> <%= restaurant.address %></p>
-                </div>
-                <div class="card-content-numbers">
-                <p><i class="fa-regular fa-star"></i> <%= restaurant.rating %></p>
-                <input type="checkbox"
-                     name="restaurant_ids[]"
-                     value="<%= restaurant.id %>">
-                <p><%= restaurant.budget %></p>
-              </div>
-            </div>
-          </div>
-        </li>
+      <div id="new_message_container">
+        <%= simple_form_for [@chat, @message] do |f| %>
+          <%= f.input :content, label: @label, required: true, placeholder: @label %>
+          <%= f.button :submit, 'Send', class:"btn btn-ghost my-2", style: "width: 150px" %>
         <% end %>
-      </ul>
-      <button type="submit" class="btn btn-primary">Add to favourites</button>
-      <% end %>
-        </div>
-          </form>
+      </div>
     </div>
+
+    <div id="cardandmap" class = "col-md-6">
+      <div id = "card">
+        <% if @restaurants %>
+          <form action="<%= chat_restaurants_path(@chat) %>"  method="patch">
+          <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
+            <li class= "card">
+              <div class="card-product">
+                <div class="img-block">
+                  <%= image_tag "burger.jpeg", alt: "restau_poster" %>
+                </div>
+                <div class="card-product-infos">
+                  <div class="card-content-text">
+                    <h2><%= restaurant.name %></h2>
+                    <h4><%= restaurant.category %></h4>
+                    <p> <%= restaurant.address %></p>
+                    </div>
+                    <div class="card-content-numbers">
+                    <p><i class="fa-regular fa-star"></i> <%= restaurant.rating %></p>
+                    <input type="checkbox"
+                          name="restaurant_ids[]"
+                          value="<%= restaurant.id %>">
+                    <p><%= restaurant.budget %></p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <% end %>
+          </ul>
+          <button type="submit" class="btn btn-ghost my-2" style= "width: 300px">Add to favourites</button>
+        </form>
+        <% end %>
+        </div>
   </div>
+</div>
 </div>

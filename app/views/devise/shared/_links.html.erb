@@ -3,11 +3,11 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-success my-2" %><br />
+  <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-ghost my-2", style: "width: 200px"%><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot my password", new_password_path(resource_name), class:"btn btn-ghost my-2" %><br />
+  <%= link_to "Forgot my password", new_password_path(resource_name), style: "color: grey" %><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

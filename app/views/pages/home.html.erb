@@ -8,7 +8,7 @@
   <div class="home-split">
 
     <div class="card-holder">
-      <h3>Here are your favourite restaurants</h3>
+      <h3>Your favourite restaurants</h3>
 
       <div class="card-scroll">
         <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
@@ -34,12 +34,12 @@
           <% end %>
         </ul>
       </div>
-      <%= button_to "Add a new restaurant", chats_path, method: :post, class:"btn btn-secondary my-3" %>
+      <%= button_to "Add a new restaurant", chats_path, method: :post, class:"btn btn-ghost my-2", style: "width: 400px" %>
     </div>
 
     <div class="favourite-generator">
       <h3>Ask AI to generate another restaurant close to your favorites</h3>
-      <%= link_to "Generate Restaurant", "#", class:"btn btn-secondary my-3" %>
+      <%= link_to "Generate Restaurant", "#", class:"btn btn-ghost my-2", style: "width: 400px" %>
     </div>
 
   </div>
