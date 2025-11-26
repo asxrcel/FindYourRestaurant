@@ -1,7 +1,7 @@
 class Chat < ApplicationRecord
   has_many :messages
   belongs_to :user
-  DEFAULT_TITLE = "Untitled"
+  DEFAULT_TITLE = "New chat"
   TITLE_PROMPT = <<~PROMPT
   Generate a short, descriptive, 3-to-6-word title that tell : Search a restaurant in (location).
   PROMPT
