@@ -5,4 +5,6 @@ class PagesController < ApplicationController
     @restaurants = current_user.restaurants.last(5)
   end
 
+
+  
 end
