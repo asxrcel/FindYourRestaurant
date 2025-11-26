@@ -1,6 +1,3 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= button_to "Start a chat", chats_path, method: :post  %>
 <header> <%= render "shared/navbar" %> </header>
 
 <div class="home-body">
@@ -37,7 +34,7 @@
           <% end %>
         </ul>
       </div>
-      <%= link_to "Add a new restaurant", "#", class:"btn btn-secondary my-3" %>
+      <%= button_to "Add a new restaurant", chats_path, method: :post, class:"btn btn-secondary my-3" %>
     </div>
 
     <div class="favourite-generator">
