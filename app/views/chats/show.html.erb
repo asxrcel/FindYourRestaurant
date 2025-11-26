@@ -1,3 +1,4 @@
+<header> <%= render "shared/navbar" %> </header>
 <div class ="text-center">
 <h1 id="chat_title"><%= @chat.title %></h1>
 </div>
@@ -32,6 +33,7 @@
     <div id="cardandmap" class = "col-md-6">
         <div id = "card">
           <% if @restaurants %>
+          <form action="<%= chat_restaurants_path(@chat) %>"  method="patch">
         <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
         <li class= "card">
           <div class="card-product">
@@ -46,6 +48,9 @@
                 </div>
                 <div class="card-content-numbers">
                 <p><i class="fa-regular fa-star"></i> <%= restaurant.rating %></p>
+                <input type="checkbox"
+                     name="restaurant_ids[]"
+                     value="<%= restaurant.id %>">
                 <p><%= restaurant.budget %></p>
               </div>
             </div>
@@ -53,9 +58,10 @@
         </li>
         <% end %>
       </ul>
+      <button type="submit" class="btn btn-primary">Add to favourites</button>
       <% end %>
         </div>
+          </form>
     </div>
   </div>
 </div>
-<%= link_to "Home", root_path   %>
