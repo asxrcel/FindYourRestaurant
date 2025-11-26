@@ -19,15 +19,15 @@
 </div>
 
 <div id="new_message_container">
-  <%= simple_form_for [@chat, @message] do |f| %>
-    <%= f.input :content, label: "Send your location", required: true, placeholder: "Send your location" %>
-    <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
-  <% end %>
+    <%= simple_form_for [@chat, @message] do |f| %>
+      <%= f.input :content, label: @label, required: true, placeholder: @label %>
+      <%= f.button :submit, 'Answere', class: 'btn btn-primary' %>
+    <% end %>
 </div>
 
 <%= link_to "Home", root_path   %>
-<% if @restaurants.present? %>
+<% if @restaurants %>
 <% @restaurants.each do |restaurant| %>
-<%= restaurant.name %>
+<%= restaurant.name%>
 <% end %>
 <% end %>
