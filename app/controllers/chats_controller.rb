@@ -13,7 +13,7 @@ class ChatsController < ApplicationController
     @chat = current_user.chats.find(params[:id])
     @label = label
     @message = Message.new
-    @restaurants = current_user.restaurants.order(created_at: :desc).limit(5)
+    @restaurants = @chat.restaurants.last(5)
   end
   private
   def label
