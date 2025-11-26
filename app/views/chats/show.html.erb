@@ -62,7 +62,9 @@
             </li>
             <% end %>
           </ul>
-          <button type="submit" class="btn btn-ghost my-2" style= "width: 300px">Add to favourites</button>
+          <% if @restaurants.present? %>
+            <button type="submit" class="btn btn-ghost my-2" style= "width: 300px">Add to favourites</button>
+          <% end %>
         </form>
         <% end %>
         </div>
