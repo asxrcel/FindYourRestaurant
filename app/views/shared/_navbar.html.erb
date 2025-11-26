@@ -7,7 +7,7 @@
           <ul class="navbar-nav me-auto">
             <% if current_user %>
               <li class="nav-item active">
-                <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-secondary" %>
+                <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"logout-btn" %>
               </li>
             <% else %>
               <li class="nav-item active">
