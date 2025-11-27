@@ -1,9 +1,8 @@
 <header> <%= render "shared/navbar" %> </header>
 
-<div class="home-body">
+<div class="home-body" >
 
   <h1> Welcome <%= current_user.name.capitalize %></h1>
-  <hr>
 
   <div class="home-split">
 
@@ -34,7 +33,11 @@
           <% end %>
         </ul>
       </div>
-      <%= button_to "Add a new restaurant", chats_path, method: :post, class:"btn btn-ghost my-2", style: "width: 400px" %>
+      <%= button_to "Add a new restaurant",
+        chats_path,
+        method: :post,
+        class:"btn btn-ghost my-2",
+        style: "width: 400px" %>
     </div>
 
     <div class="favourite-generator" data-controller ="favoritemap"  data-favoritemap-markers-value="<%= @restaurants.map { |restaurant|
@@ -50,6 +53,15 @@
           <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
         </div>
       <div></div>
+    <div class="favourite-generator">
+      <%= button_to "Who am I ?",
+        profils_path(current_user),
+        method: :post,
+        class:"btn btn-ghost my-2",
+        style: "width: 400px" %>
+
+      <h3> Your Profile </h3>
+      <p><%= @my_profile %></p>
     </div>
 
   </div>

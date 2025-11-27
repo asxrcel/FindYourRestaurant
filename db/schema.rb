@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_26_190846) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_27_142234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_26_190846) do
     t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
+  create_table "generators", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_generators_on_restaurant_id"
+    t.index ["user_id"], name: "index_generators_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "role"
     t.string "content"
@@ -29,6 +38,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_26_190846) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
+  end
+
+  create_table "profils", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profils_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -45,6 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_26_190846) do
     t.float "latitude"
     t.float "longitude"
     t.string "photo_url"
+    t.boolean "selected", default: false
     t.index ["chat_id"], name: "index_restaurants_on_chat_id"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
@@ -64,7 +83,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_26_190846) do
   end
 
   add_foreign_key "chats", "users"
+  add_foreign_key "generators", "restaurants"
+  add_foreign_key "generators", "users"
   add_foreign_key "messages", "chats"
+  add_foreign_key "profils", "users"
   add_foreign_key "restaurants", "chats"
   add_foreign_key "restaurants", "users"
 end

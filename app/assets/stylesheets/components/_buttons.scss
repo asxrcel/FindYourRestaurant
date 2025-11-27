@@ -1,11 +1,12 @@
 .btn-ghost {
-  color: #1d1d1d;
+  color: #000000;
   border: 1px solid #1d1d1d;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
   opacity: 0.8;
   transition: opacity 0.3s ease;
+  background-color: rgb(170, 169, 169);
 }
 
 .btn-ghost:hover {
@@ -13,7 +14,7 @@
 }
 
 .logout-btn {
-  color: grey;
+  color: rgb(45, 45, 45);
   border: none;
-  background-color: white;
+  background: none;
 }
