@@ -1,12 +1,16 @@
 .card-holder {
-  width: 45%;
-  margin-left: 20px;
-  padding: 8px;
+  width: 800px;
+  margin-left: 30px;
+  margin-right: 30px;
+  background-color: #fcb9b2;
+  border-radius: 15px;
 }
 
 .card {
   margin-bottom: 8px;
   height: 80;
+  border-radius: 15px;
+  border-width: 0;
 }
 
 .img-block {
@@ -26,7 +30,9 @@
 }
 
 .card-scroll {
-  height: 400px;                    /* prend tout l’espace vertical dispo */
+  height: 400px;
+  width: 400px;
+  align-items: center;                    /* prend tout l’espace vertical dispo */
   overflow-y: auto;           /* active la barre de défilement */
   padding: 8px;         /* petit espace pour le scroll */
   border: 2px;
@@ -34,6 +40,7 @@
   border-color: black;
   margin-bottom: 30px;
   margin-top: 30px;
+  background-color: rgb(255, 254, 254);
 }
 
 .card-product {
@@ -41,7 +48,17 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+  border-radius: 15px;
+  &:hover {
+   transform: translateY(-4px);
+   transform: translateX(6px);
+  }
 }
+
+.card-product:has(.card-check:checked) {
+  background-color: $new-red;
+}
+
 
 .card-product-infos {
   padding: 8px;
@@ -86,4 +103,15 @@
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+}
+
+#chatbox {
+  background-color: $new-red;
+  border-radius: 10px;
+
+  .chat-border {
+    color:rgb(255, 254, 254);
+    border-radius: 95% 95% 2% 95%;
+    background-color:#00254c86;
+  }
 }
