@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
                      else
                       search_query
                      end
-            places = google_places_text_search(search_query)
+            places = google_places_text_search(full_query)
             Rails.logger.info "Google Places raw results (first): #{places.first.inspect}"
              @restaurants = places.first(6).map do |place|
               photo_ref = place["photos"][0]["photo_reference"]
