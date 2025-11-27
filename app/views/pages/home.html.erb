@@ -34,12 +34,22 @@
           <% end %>
         </ul>
       </div>
-      <%= button_to "Add a new restaurant", chats_path, method: :post, class:"btn btn-ghost my-2", style: "width: 400px" %>
+      <%= button_to "Add a new restaurant",
+        chats_path,
+        method: :post,
+        class:"btn btn-ghost my-2",
+        style: "width: 400px" %>
     </div>
 
     <div class="favourite-generator">
-      <h3>Ask AI to generate another restaurant close to your favorites</h3>
-      <%= link_to "Generate Restaurant", "#", class:"btn btn-ghost my-2", style: "width: 400px" %>
+      <%= button_to "Who am I ?",
+        profils_path(current_user),
+        method: :post,
+        class:"btn btn-ghost my-2",
+        style: "width: 400px" %>
+
+      <h3> Your Profile </h3>
+      <p><%= @my_profile %></p>
     </div>
 
   </div>
