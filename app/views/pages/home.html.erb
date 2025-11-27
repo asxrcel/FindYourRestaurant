@@ -2,7 +2,7 @@
 
 <div class="home-body">
 
-  <h1> Welcome <%= current_user.name %></h1>
+  <h1> Welcome <%= current_user.name.capitalize %></h1>
   <hr>
 
   <div class="home-split">
@@ -15,7 +15,7 @@
           <li class= "card">
             <div class="card-product">
               <div class="img-block">
-                <%= image_tag "burger.jpeg", alt: "restau_poster" %>
+                <%= image_tag(restaurant.photo_url.presence || "burger.jpeg", alt: "restau_poster") %>
                 <%= link_to " ", restaurant_path(restaurant), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"},  class:"fa-regular fa-circle-xmark delete-icon" %>
                   </div>
                   <div class="card-product-infos">
