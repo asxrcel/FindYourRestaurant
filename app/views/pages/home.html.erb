@@ -40,6 +40,19 @@
         style: "width: 400px" %>
     </div>
 
+    <div class="favourite-generator" data-controller ="favoritemap"  data-favoritemap-markers-value="<%= @restaurants.map { |restaurant|
+       { lng: restaurant.longitude, lat: restaurant.latitude, name: restaurant.name }
+     }.to_json %>">
+      <h3>Ask AI to generate another restaurant close to your favorites</h3>
+      <%= link_to "Generate Restaurant", "#", class:"btn btn-ghost my-2", style: "width: 400px" %>
+      <% if @restaurants.any? %>
+      <button  type="button" style= "width: 300px" class="btn btn-ghost my-2" data-action="click->favoritemap#toggleMap" data-favoritemap-target="button">Display the map</button>
+      <% end %>
+      <div>
+        <div id="map" data-favoritemap-target="map" style="height: 400px"; class="d-none"></div>
+          <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
+        </div>
+      <div></div>
     <div class="favourite-generator">
       <%= button_to "Who am I ?",
         profils_path(current_user),
