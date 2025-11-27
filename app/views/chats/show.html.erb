@@ -4,9 +4,9 @@
   <h1 id="chat_title"><%= @chat.title %></h1>
 </div>
 
-<div class = "container">
+<div class = "container" >
   <div class = "row d-flex">
-    <div id = "chatbox" class ="col-md-6 border">
+    <div id = "chatbox" class ="col-md-6 border" data-controller="chat" data-chat-message-count-value= "<%= @chat.messages.where(role: "user").count%>" >
 
       <div id="messages">
         <% @chat.messages.each do |message| %>
@@ -29,12 +29,14 @@
       <div id="new_message_container">
         <%= simple_form_for [@chat, @message] do |f| %>
           <%= f.input :content, label: @label, required: true, placeholder: @label %>
-          <%= f.button :submit, 'Send', class:"btn btn-ghost my-2", style: "width: 150px" %>
+          <%= f.button :submit, 'Send', class:"btn btn-ghost my-2", style: "width: 150px", data:{chat_target: "button"}%>
         <% end %>
       </div>
     </div>
 
-    <div id="cardandmap" class = "col-md-6">
+    <div id="cardandmap" class = "col-md-6" data-controller ="map"  data-map-markers-value="<%= @restaurants.map { |restaurant|
+       { lng: restaurant.longitude, lat: restaurant.latitude, name: restaurant.name }
+     }.to_json %>">
       <div id = "card">
         <% if @restaurants %>
           <form action="<%= chat_restaurants_path(@chat) %>"  method="patch">
@@ -64,9 +66,15 @@
           </ul>
           <% if @restaurants.present? %>
             <button type="submit" class="btn btn-ghost my-2" style= "width: 300px">Add to favourites</button>
+            <button  type="button" style= "width: 300px" class="btn btn-ghost my-2" data-action="click->map#displayMap">Display the map</button>
           <% end %>
         </form>
         <% end %>
+        </div>
+        <div>
+        <div id="map" data-map-target="map" style="height: 400px"; display: none></div>
+          <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
+
         </div>
   </div>
 </div>

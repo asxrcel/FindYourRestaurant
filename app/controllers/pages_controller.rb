@@ -4,7 +4,4 @@ class PagesController < ApplicationController
   def home
     @restaurants = current_user.restaurants.where(favorite: true)
   end
-
-
-  
 end
