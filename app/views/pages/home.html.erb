@@ -54,17 +54,11 @@
         }.to_json %>">
 
         <div>
-          <div id="map" data-favoritemap-target="map" style="height: 400px"; class="d-none"></div>
+          <% if @restaurants.any? %>
+          <div id="map" data-favoritemap-target="map" style="height: 400px"></div>
           <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
+          <% end %>
         </div>
-
-        <% if @restaurants.any? %>
-          <button  type="button" style= "width: 300px"
-            class="btn btn-ghost my-2"
-            data-action="click->favoritemap#toggleMap"
-            data-favoritemap-target="button">Display the map</button>
-        <% end %>
-
       </div>
     </div>
   </div>
