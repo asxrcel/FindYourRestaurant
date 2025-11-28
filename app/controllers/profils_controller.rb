@@ -21,13 +21,12 @@ class ProfilsController < ApplicationController
     chat = RubyLLM.chat
 
     prompt = <<~PROMPT
-        Can you describe me based on my favourite restaurants ?
-        Here are their names : #{@restaurantNames}
-        Here are their budgets : #{@restaurantBudgets}
+        You are my best friend, you give friendly advices and have a good understanding of who I am.
+        Describe me based on my favourite restaurants, in less than 60 words.
+        Here are the names : #{@restaurantNames}
         Here are their categories : #{@restaurantCategories}
-        make sure the answer is 100 words max.
+        Be kind and creative about the overall feeling you get from the list.
         write something directly readable, without markdown
-        
       PROMPT
 
     response = chat.ask(prompt)

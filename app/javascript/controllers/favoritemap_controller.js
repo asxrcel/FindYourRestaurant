@@ -7,8 +7,8 @@ export default class extends Controller {
   static targets = ["map"]
 
   connect() {
-    console.log("Markers:", this.markersValue)
-    console.log(this.mapTarget)
+    // console.log("Markers:", this.markersValue)
+    // console.log(this.mapTarget)
     // this.buttonTarget.innerText = "Afficher la carte"
     mapboxgl.accessToken = "pk.eyJ1IjoiZ2FzcGFyZDAwIiwiYSI6ImNtaHN5bDZydTE3aHcybHI0Y243bzY2dG0ifQ.ZKbOmRjLRtc7P5RkRKHv5g"
     if (mapboxgl.setTelemetryDisabled) {
@@ -25,6 +25,7 @@ export default class extends Controller {
       this.fitBoundsToMarkers()
     })
   }
+  
   addMarkers() {
     this.markersValue.forEach((marker) => {
       new mapboxgl.Marker()
@@ -33,8 +34,10 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
+
   fitBoundsToMarkers() {
-    if (this.markersValue.length === 0) return
+    if (this.markersValue.length === 0) return;
+
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach((marker) => {
       bounds.extend([marker.lng, marker.lat])

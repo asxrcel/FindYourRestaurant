@@ -14,17 +14,25 @@
 }
 
 .logout-btn {
-  color: rgb(45, 45, 45);
+  color: white;
   border: none;
   background: none;
 }
 
 .button-perso {
-  background-color: $new-blue;
+  background-color: $blue;
   color: white;
   border-radius: 5px;
   height: 40px;
   &:hover {
     opacity: 1;
   }
+}
+.button-perso-secondary {
+  color: $blue;
+  background: none;
+  border: 3px solid $blue;
+
+  height: 40px;
+  border-radius: 5px;
 }
