@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
               )
             end
             li_list = @restaurants.map {|r| "<li>#{r["name"]}</li>"}.join
-            final_content = "Voici quelques restaurants que j'ai trouvés pour toi, Bon appétit"
+            final_content = "Voici quelques restaurants que j'ai trouvés pour toi, Bon appétit3"
             Message.create(
               role: "assistant",
               content:final_content,

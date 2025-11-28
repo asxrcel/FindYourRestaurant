@@ -4,41 +4,26 @@ export default class extends Controller {
   static values = {
     markers: Array
   }
-  static targets = ["map", "button"]
+  static targets = ["map"]
 
   connect() {
     console.log("Markers:", this.markersValue)
     console.log(this.mapTarget)
-    this.buttonTarget.innerText = "Afficher la carte"
-  }
-
-  toggleMap(event) {
-    event.preventDefault()
-    const wasCache = this.mapTarget.classList.contains("d-none")
-    this.mapTarget.classList.toggle("d-none")
-    if (wasCache) {
-      this.buttonTarget.innerText = "Masquer la carte"
-      if (this.map) {
-        this.map.resize()
-        return
-      }
-      mapboxgl.accessToken = "pk.eyJ1IjoiZ2FzcGFyZDAwIiwiYSI6ImNtaHN5bDZydTE3aHcybHI0Y243bzY2dG0ifQ.ZKbOmRjLRtc7P5RkRKHv5g"
-      if (mapboxgl.setTelemetryDisabled) {
-        mapboxgl.setTelemetryDisabled(true)
-      }
-      this.map = new mapboxgl.Map({
-        container: this.mapTarget,
-        style: "mapbox://styles/mapbox/streets-v9",
-        center: [2.35, 48.85],
-        zoom: 12
-      })
-      this.map.on("load", () => {
-        this.addMarkers()
-        this.fitBoundsToMarkers()
-      })
-    } else {
-      this.buttonTarget.innerText = "Afficher la carte"
+    // this.buttonTarget.innerText = "Afficher la carte"
+    mapboxgl.accessToken = "pk.eyJ1IjoiZ2FzcGFyZDAwIiwiYSI6ImNtaHN5bDZydTE3aHcybHI0Y243bzY2dG0ifQ.ZKbOmRjLRtc7P5RkRKHv5g"
+    if (mapboxgl.setTelemetryDisabled) {
+      mapboxgl.setTelemetryDisabled(true)
     }
+    this.map = new mapboxgl.Map({
+      container: this.mapTarget,
+      style: "mapbox://styles/mapbox/streets-v9",
+      center: [2.35, 48.85],
+      zoom: 12
+    })
+    this.map.on("load", () => {
+      this.addMarkers()
+      this.fitBoundsToMarkers()
+    })
   }
   addMarkers() {
     this.markersValue.forEach((marker) => {
