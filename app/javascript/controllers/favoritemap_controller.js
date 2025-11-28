@@ -4,12 +4,11 @@ export default class extends Controller {
   static values = {
     markers: Array
   }
-  static targets = ["map", "button"]
+  static targets = ["map"]
 
   connect() {
     console.log("Markers:", this.markersValue)
     console.log(this.mapTarget)
-    this.buttonTarget.innerText = "Afficher la carte"
   }
 
   toggleMap(event) {

@@ -1,9 +1,8 @@
 .card-holder {
-  width: 800px;
-  margin-left: 30px;
-  margin-right: 30px;
-  background-color: #FCCBC8;
+  width: 47.5%;
+  background-color: $pink;
   border-radius: 15px;
+  padding-top: 10px;
 }
 
 .card {
@@ -36,7 +35,7 @@
   overflow-y: auto;           /* active la barre de défilement */
   padding: 8px;         /* petit espace pour le scroll */
   margin-bottom: 30px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .card-product {
@@ -52,7 +51,7 @@
 }
 
 .card-product:has(.card-check:checked) {
-  background-color: grey;
+  background-color: $pink;
   color: white;
 }
 
@@ -103,12 +102,12 @@
 }
 
 #chatbox {
-  background-color: grey;
+  background-color: $pink;
   border-radius: 10px;
 
   .chat-border {
     color:rgb(255, 254, 254);
     border-radius: 95% 95% 2% 95%;
-    background-color:#00254c;
+    background-color: $blue;
   }
 }

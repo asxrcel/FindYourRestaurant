@@ -2,12 +2,26 @@
 
 <div class="home-body" >
 
-  <h1> Welcome <%= current_user.name.capitalize %></h1>
+  <div class="profile favourite-generator" style="width: 90%; margin: auto; margin-bottom:40px" >
+    <h1> Welcome <%= current_user.name.capitalize %></h1>
+    <p style="width: 90%; margin:auto"><%= @my_profile %></p>
+    <%= button_to "Who am I ?",
+      profils_path(current_user),
+      method: :post,
+      class:"button-perso-secondary my-2",
+      style: "width: 150px" %>
+  </div>
 
-  <div class="home-split">
+  <div class="home-split" style="width: 90%; margin:auto">
 
     <div class="card-holder">
       <h3>Your favourite restaurants</h3>
+      <%= button_to "Add a new restaurant",
+        chats_path,
+        method: :post,
+        class:"button-perso my-2",
+        style: "width: 400px" %>
+
       <div class="card-scroll">
         <ul style="padding: 0px"> <% @restaurants.each do |restaurant| %>
           <li class= "card">
@@ -32,38 +46,17 @@
           <% end %>
         </ul>
       </div>
-      <%= button_to "Add a new restaurant",
-        chats_path,
-        method: :post,
-        class:"btn btn-ghost my-2",
-        style: "width: 400px" %>
     </div>
 
     <div class="favourite-generator">
-
-      <h3> Your Profile </h3>
-      <p class= "typewriter"><%= @my_profile %></p>
-      <%= button_to "Who am I ?",
-        profils_path(current_user),
-        method: :post,
-        class:"btn btn-ghost my-2",
-        style: "width: 400px" %>
-
-      <div class="favourite-generator" data-controller ="favoritemap"  data-favoritemap-markers-value="<%= @restaurants.map { |restaurant|
+      <div data-controller ="favoritemap" style="width: 80%; margin:auto" data-favoritemap-markers-value="<%= @restaurants.map { |restaurant|
         { lng: restaurant.longitude, lat: restaurant.latitude, name: restaurant.name }
         }.to_json %>">
 
         <div>
-          <div id="map" data-favoritemap-target="map" style="height: 400px"; class="d-none"></div>
+          <div id="map" data-favoritemap-target="map" style="height: 400px"></div>
           <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
         </div>
-
-        <% if @restaurants.any? %>
-          <button  type="button" style= "width: 300px"
-            class="btn btn-ghost my-2"
-            data-action="click->favoritemap#toggleMap"
-            data-favoritemap-target="button">Display the map</button>
-        <% end %>
 
       </div>
     </div>
