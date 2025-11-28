@@ -54,8 +54,11 @@
         }.to_json %>">
 
         <div>
+          <% if @restaurants.any? %>
+          <div id="map" data-favoritemap-target="map" style="height: 400px"></div>
           <div id="map" data-favoritemap-target="map" style="height: 400px"></div>
           <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
+          <% end %>
         </div>
 
       </div>
