@@ -2,7 +2,7 @@
   width: 800px;
   margin-left: 30px;
   margin-right: 30px;
-  background-color: #fcb9b2;
+  background-color: #FCCBC8;
   border-radius: 15px;
 }
 
@@ -10,7 +10,6 @@
   margin-bottom: 8px;
   height: 80;
   border-radius: 15px;
-  border-width: 0;
 }
 
 .img-block {
@@ -30,17 +29,14 @@
 }
 
 .card-scroll {
+  margin: auto;
+  width: 90% ;
   height: 400px;
-  width: 400px;
   align-items: center;                    /* prend tout l’espace vertical dispo */
   overflow-y: auto;           /* active la barre de défilement */
   padding: 8px;         /* petit espace pour le scroll */
-  border: 2px;
-  border-style: groove;
-  border-color: black;
   margin-bottom: 30px;
   margin-top: 30px;
-  background-color: rgb(255, 254, 254);
 }
 
 .card-product {
@@ -56,7 +52,8 @@
 }
 
 .card-product:has(.card-check:checked) {
-  background-color: $new-red;
+  background-color: grey;
+  color: white;
 }
 
 
@@ -106,12 +103,12 @@
 }
 
 #chatbox {
-  background-color: $new-red;
+  background-color: grey;
   border-radius: 10px;
 
   .chat-border {
     color:rgb(255, 254, 254);
     border-radius: 95% 95% 2% 95%;
-    background-color:#00254c86;
+    background-color:#00254c;
   }
 }

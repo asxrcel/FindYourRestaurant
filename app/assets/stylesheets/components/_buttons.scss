@@ -18,3 +18,13 @@
   border: none;
   background: none;
 }
+
+.button-perso {
+  background-color: $new-blue;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  &:hover {
+    opacity: 1;
+  }
+}

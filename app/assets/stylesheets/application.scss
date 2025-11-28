@@ -35,3 +35,21 @@ h4 {
  font-family: $gpt-font;
  font-size: 24px;
 }
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;                /* masque le texte */
+  border-right: 2px solid #000;    /* curseur */
+  white-space: nowrap;             /* une seule ligne */
+  animation: typing 3s steps(30), blink 0.5s step-end infinite;
+}
+/* Animation de "tape" */
+@keyframes typing {
+  from { width: 0 }
+  to   { width: 100% }
+}
+/* Animation du curseur qui clignote */
+@keyframes blink {
+  from, to { border-color: transparent }
+  50%      { border-color: black }
+}
