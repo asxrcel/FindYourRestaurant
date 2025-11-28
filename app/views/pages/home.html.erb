@@ -4,7 +4,7 @@
 
   <div class="profile favourite-generator" style="width: 90%; margin: auto; margin-bottom:40px" >
     <h1> Welcome <%= current_user.name.capitalize %></h1>
-    <p style="width: 90%; margin:auto"><%= @my_profile %></p>
+    <p style="width: 95%; margin:auto"><%= @my_profile %></p>
     <%= button_to "Who am I ?",
       profils_path(current_user),
       method: :post,
@@ -55,7 +55,6 @@
 
         <div>
           <% if @restaurants.any? %>
-          <div id="map" data-favoritemap-target="map" style="height: 400px"></div>
           <div id="map" data-favoritemap-target="map" style="height: 400px"></div>
           <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
           <% end %>
